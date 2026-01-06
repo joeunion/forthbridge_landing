@@ -124,31 +124,17 @@
             justify-content: center;
             padding: var(--space-3xl) var(--space-lg);
             position: relative;
-            transition: background-color 0.4s ease;
         }
 
-        section:hover {
-            background-color: var(--color-bg-hover);
-        }
-
-        /* Hero and final section: pure white */
+        /* Hero and final section */
         section:first-child,
         section:last-child {
-            background: var(--color-bg-primary);
-        }
-
-        section:first-child:hover,
-        section:last-child:hover {
             background: var(--color-bg-primary);
         }
 
         /* Alternating backgrounds */
         section:nth-child(even) {
             background: var(--color-bg-alternate-dark);
-        }
-
-        section:nth-child(even):hover {
-            background: var(--color-bg-alternate);
         }
 
         .content {
