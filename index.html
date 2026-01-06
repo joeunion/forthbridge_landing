@@ -60,7 +60,7 @@
       "url": "https://forthbridge.com",
       "logo": "https://forthbridge.com/favicon.svg",
       "description": "Technology and operations platform for care delivery organizations to sell health programs directly to employers.",
-      "email": "hello@forthbridge.com",
+      "email": "hello@forth-bridge.com",
       "foundingDate": "2023",
       "industry": "Healthcare Technology"
     }
@@ -215,7 +215,7 @@
         h1 {
             font-size: var(--font-size-lg);
             font-weight: 300;
-            line-height: 1.45;
+            line-height: 1.75;
             letter-spacing: -0.01em;
             margin-bottom: var(--space-md);
             text-wrap: pretty;
@@ -223,15 +223,15 @@
 
         p {
             font-size: var(--font-size-sm);
-            color: var(--color-text-medium);
+            color: var(--color-text-primary);
             line-height: 1.75;
-            font-weight: 400;
+            font-weight: 300;
             text-wrap: pretty;
         }
 
         .section-text {
             font-size: var(--font-size-md);
-            line-height: 1.6;
+            line-height: 1.75;
             letter-spacing: -0.005em;
             color: var(--color-text-primary);
             font-weight: 300;
@@ -241,7 +241,7 @@
         .secondary {
             color: var(--color-text-secondary);
             margin-top: var(--space-md);
-            font-weight: 400;
+            font-weight: 300;
         }
 
         a {
@@ -251,21 +251,12 @@
             transition: border-color 0.3s ease, color 0.3s ease;
             padding: var(--space-xs) 0;
             display: inline-block;
-            font-weight: 400;
+            font-weight: 300;
         }
 
         a:hover {
             border-color: var(--color-text-primary);
             color: var(--color-link-hover);
-        }
-
-        .stats {
-            margin-top: var(--space-lg);
-            font-size: var(--font-size-xs);
-            color: var(--color-text-secondary);
-            font-variant-numeric: tabular-nums;
-            font-weight: 400;
-            letter-spacing: 0.01em;
         }
 
         @media (max-width: 640px) {
@@ -278,7 +269,7 @@
             }
 
             h1 {
-                line-height: 1.4;
+                line-height: 1.75;
             }
 
             /* Sticky header gradient for mobile */
@@ -330,9 +321,13 @@
             position: fixed;
             top: 0;
             left: 0;
+            right: 0;
             padding: var(--space-sm) var(--space-lg);
             z-index: 1000;
             pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .sticky-header img {
@@ -348,11 +343,36 @@
             pointer-events: auto;
         }
 
+        .header-contact-button {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-primary);
+            text-decoration: none;
+            border: 1px solid var(--color-link-underline);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            font-weight: 300;
+            letter-spacing: -0.005em;
+        }
+
+        .sticky-header.visible .header-contact-button {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .header-contact-button:hover {
+            border-color: var(--color-text-primary);
+            color: var(--color-link-hover);
+            background: var(--color-bg-hover);
+        }
+
     </style>
 </head>
 <body>
     <header class="sticky-header">
         <img src="/assets/ForthBridgeOSLogo.svg" alt="ForthBridge">
+        <a href="mailto:hello@forth-bridge.com" class="header-contact-button">Contact Us</a>
     </header>
 
     <section>
@@ -361,7 +381,7 @@
                 <img src="/assets/ForthBridgeOSLogo.svg" alt="ForthBridge">
             </div>
             <h1>Care delivery organizations bring their clinical footprint. We provide the technology and operations infrastructure to sell health programs directly to employers.</h1>
-            <p>A new line of business—without building it yourself.</p>
+            <p class="section-text secondary">A new line of business—without building it yourself.</p>
         </div>
     </section>
 
@@ -387,13 +407,13 @@
     <section>
         <div class="content">
             <p class="section-text">Live today powering NextLevel PRIME in Texas.</p>
-            <p class="stats">120,000 members · 500 employers · 99.6% retention</p>
+            <p class="section-text secondary">120,000 members<br>500 employers<br>99.6% retention<br>+90 Member NPS</p>
         </div>
     </section>
 
     <section>
         <div class="content">
-            <p class="section-text"><a href="mailto:hello@forthbridge.com">hello@forthbridge.com</a></p>
+            <p class="section-text"><a href="mailto:hello@forth-bridge.com">hello@forth-bridge.com</a></p>
         </div>
     </section>
 
@@ -421,8 +441,8 @@
         // ============================================
 
         const observerOptions = {
-            threshold: 0.3,
-            rootMargin: '0px 0px -100px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -499,9 +519,9 @@
 
         // Track email clicks
         document.addEventListener('DOMContentLoaded', () => {
-            const emailLink = document.querySelector('a[href^="mailto"]');
-            if (emailLink) {
-                emailLink.addEventListener('click', () => {
+            const emailLinks = document.querySelectorAll('a[href^="mailto"]');
+            emailLinks.forEach(link => {
+                link.addEventListener('click', () => {
                     if (typeof gtag !== 'undefined') {
                         gtag('event', 'email_click', {
                             'event_category': 'engagement',
@@ -509,7 +529,7 @@
                         });
                     }
                 });
-            }
+            });
         });
 
         // Track scroll depth
