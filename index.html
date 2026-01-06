@@ -40,7 +40,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1M71STXQEB"></script>
@@ -77,6 +77,12 @@
             --space-2xl: 4rem;
             --space-3xl: 6rem;
 
+            /* Typography Scale */
+            --font-size-xs: 1.05rem;
+            --font-size-sm: 1.2rem;
+            --font-size-md: 1.5rem;
+            --font-size-lg: 2rem;
+
             /* Colors */
             --color-bg-primary: #ffffff;
             --color-bg-alternate: #fafafa;
@@ -101,10 +107,10 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Crimson Pro', Georgia, serif;
             background: var(--color-bg-alternate);
             color: var(--color-text-primary);
-            line-height: 1.6;
+            line-height: 1.65;
             font-weight: 400;
             text-rendering: optimizeLegibility;
             -webkit-font-smoothing: antialiased;
@@ -146,7 +152,7 @@
         }
 
         .content {
-            max-width: 680px;
+            max-width: 600px;
             opacity: 0;
             transform: translate3d(0, 30px, 0);
             filter: blur(3px);
@@ -157,14 +163,14 @@
                 filter 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
         }
 
-        .content.visible {
-            opacity: 1;
-            transform: translate3d(0, 0, 0);
-            filter: blur(0);
+        /* First section will be triggered by JavaScript */
+        section:first-child .content:not(.visible) {
+            opacity: 0;
+            transform: translate3d(0, 30px, 0);
+            filter: blur(3px);
         }
 
-        /* First section visible by default */
-        section:first-child .content {
+        .content.visible {
             opacity: 1;
             transform: translate3d(0, 0, 0);
             filter: blur(0);
@@ -196,67 +202,84 @@
             transition-delay: 200ms;
         }
 
-        /* First section children visible by default */
-        section:first-child .content > * {
-            opacity: 1;
-            transform: translate3d(0, 0, 0);
+        /* Product reveal timing for hero section */
+        section:first-child .content.visible > *:nth-child(1) {
+            transition-delay: 0ms;
+        }
+
+        section:first-child .content.visible > *:nth-child(2) {
+            transition-delay: 1000ms;
+        }
+
+        section:first-child .content.visible > *:nth-child(3) {
+            transition-delay: 2500ms;
         }
 
         .logo {
-            font-size: 1.2rem;
-            font-weight: 500;
-            letter-spacing: -0.02em;
             margin-bottom: var(--space-2xl);
-            color: var(--color-text-primary);
             transition: opacity 0.3s ease;
         }
 
+        .logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         h1 {
-            font-size: 1.75rem;
-            font-weight: 400;
-            line-height: 1.4;
-            letter-spacing: -0.025em;
-            margin-bottom: var(--space-lg);
+            font-size: var(--font-size-lg);
+            font-weight: 300;
+            line-height: 1.45;
+            letter-spacing: -0.01em;
+            margin-bottom: var(--space-md);
+            text-wrap: pretty;
         }
 
         p {
-            font-size: 1.1rem;
+            font-size: var(--font-size-sm);
             color: var(--color-text-medium);
-            line-height: 1.7;
+            line-height: 1.75;
+            font-weight: 400;
+            text-wrap: pretty;
         }
 
         .section-text {
-            font-size: 1.35rem;
-            line-height: 1.55;
-            letter-spacing: -0.015em;
+            font-size: var(--font-size-md);
+            line-height: 1.6;
+            letter-spacing: -0.005em;
             color: var(--color-text-primary);
+            font-weight: 300;
+            text-wrap: pretty;
         }
 
         .secondary {
             color: var(--color-text-secondary);
-            margin-top: var(--space-sm);
+            margin-top: var(--space-md);
+            font-weight: 400;
         }
 
         a {
             color: var(--color-text-primary);
             text-decoration: none;
             border-bottom: 1px solid var(--color-link-underline);
-            transition: border-color 0.3s ease, color 0.3s ease, font-weight 0.3s ease;
+            transition: border-color 0.3s ease, color 0.3s ease;
             padding: var(--space-xs) 0;
             display: inline-block;
+            font-weight: 400;
         }
 
         a:hover {
             border-color: var(--color-text-primary);
             color: var(--color-link-hover);
-            font-weight: 500;
         }
 
         .stats {
             margin-top: var(--space-lg);
-            font-size: 1rem;
+            font-size: var(--font-size-xs);
             color: var(--color-text-secondary);
             font-variant-numeric: tabular-nums;
+            font-weight: 400;
+            letter-spacing: 0.01em;
         }
 
         @media (max-width: 640px) {
@@ -269,11 +292,31 @@
             }
 
             h1 {
-                font-size: 1.5rem;
+                line-height: 1.4;
             }
 
-            .section-text {
-                font-size: 1.25rem;
+            /* Sticky header gradient for mobile */
+            .sticky-header::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 80px;
+                background: linear-gradient(
+                    to bottom,
+                    rgba(255, 255, 255, 0.95) 0%,
+                    rgba(255, 255, 255, 0.85) 40%,
+                    rgba(255, 255, 255, 0) 100%
+                );
+                opacity: 0;
+                transition: opacity 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+                pointer-events: none;
+                z-index: -1;
+            }
+
+            .sticky-header.visible::before {
+                opacity: 1;
             }
         }
 
@@ -295,12 +338,42 @@
                 will-change: auto !important;
             }
         }
+
+        /* Sticky Header */
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: var(--space-sm) var(--space-lg);
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .sticky-header img {
+            height: 24px;
+            width: auto;
+            display: block;
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+
+        .sticky-header.visible img {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
     </style>
 </head>
 <body>
+    <header class="sticky-header">
+        <img src="/assets/ForthBridgeOSLogo.svg" alt="ForthBridge">
+    </header>
+
     <section>
         <div class="content">
-            <div class="logo">ForthBridge</div>
+            <div class="logo">
+                <img src="/assets/ForthBridgeOSLogo.svg" alt="ForthBridge">
+            </div>
             <h1>Care delivery organizations bring their clinical footprint. We provide the technology and operations infrastructure to sell health programs directly to employers.</h1>
             <p>A new line of business—without building it yourself.</p>
         </div>
@@ -340,6 +413,24 @@
 
     <script>
         // ============================================
+        // HERO SECTION REVEAL ON PAGE LOAD
+        // ============================================
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Trigger hero section reveal after page loads
+            setTimeout(() => {
+                const heroContent = document.querySelector('section:first-child .content');
+                if (heroContent) {
+                    heroContent.classList.add('visible');
+                    // Remove will-change after animation completes
+                    setTimeout(() => {
+                        heroContent.style.willChange = 'auto';
+                    }, 3500);
+                }
+            }, 200);
+        });
+
+        // ============================================
         // SCROLL-TRIGGERED ANIMATIONS
         // ============================================
 
@@ -360,7 +451,8 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.content').forEach(el => {
+        // Observe all sections except the first (hero handles its own animation)
+        document.querySelectorAll('section:not(:first-child) .content').forEach(el => {
             observer.observe(el);
         });
 
@@ -369,7 +461,6 @@
         // ============================================
 
         let ticking = false;
-        let lastScrollY = window.scrollY;
 
         function updateParallax() {
             const scrollY = window.scrollY;
@@ -377,8 +468,18 @@
             // Hero logo fade
             const logo = document.querySelector('.logo');
             if (logo) {
-                const logoOpacity = Math.max(0.85, 1 - (scrollY / 500));
-                logo.style.opacity = logoOpacity;
+                logo.style.opacity = String(Math.max(0.85, 1 - (scrollY / 500)));
+            }
+
+            // Sticky header toggle
+            const stickyHeader = document.querySelector('.sticky-header');
+            if (stickyHeader) {
+                // Show when scrolled past 80% of viewport height
+                if (scrollY > window.innerHeight * 0.8) {
+                    stickyHeader.classList.add('visible');
+                } else {
+                    stickyHeader.classList.remove('visible');
+                }
             }
 
             // Subtle parallax on alternating sections
