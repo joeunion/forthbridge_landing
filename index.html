@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>ForthBridge – Health Program Infrastructure for Care Organizations</title>
+    <meta name="title" content="ForthBridge – Health Program Infrastructure for Care Organizations">
+    <meta name="description" content="Technology and operations platform for care delivery organizations to sell health programs directly to employers. White-labeled, ready in weeks.">
+    <meta name="keywords" content="healthcare technology, employer health programs, B2B healthcare, direct-to-employer, care delivery infrastructure, white-label health platform">
+    <meta name="author" content="ForthBridge">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://forthbridge.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://forthbridge.com/">
+    <meta property="og:title" content="ForthBridge – Health Program Infrastructure for Care Organizations">
+    <meta property="og:description" content="Technology and operations platform for care delivery organizations to sell health programs directly to employers. White-labeled, ready in weeks.">
+    <meta property="og:image" content="https://forthbridge.com/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://forthbridge.com/">
+    <meta property="twitter:title" content="ForthBridge – Health Program Infrastructure for Care Organizations">
+    <meta property="twitter:description" content="Technology and operations platform for care delivery organizations to sell health programs directly to employers. White-labeled, ready in weeks.">
+    <meta property="twitter:image" content="https://forthbridge.com/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#fafafa">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1M71STXQEB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1M71STXQEB');
+    </script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ForthBridge",
+      "url": "https://forthbridge.com",
+      "logo": "https://forthbridge.com/favicon.svg",
+      "description": "Technology and operations platform for care delivery organizations to sell health programs directly to employers.",
+      "email": "hello@forthbridge.com",
+      "foundingDate": "2023",
+      "industry": "Healthcare Technology"
+    }
+    </script>
+
+    <style>
+        :root {
+            /* Spacing System (8px base) */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+
+            /* Colors */
+            --color-bg-primary: #ffffff;
+            --color-bg-alternate: #fafafa;
+            --color-bg-alternate-dark: #f5f5f5;
+            --color-bg-hover: #fcfcfc;
+            --color-text-primary: #1a1a1a;
+            --color-text-medium: #444;
+            --color-text-secondary: #666;
+            --color-link-underline: #d0d0d0;
+            --color-link-hover: #0a0a0a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--color-bg-alternate);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            font-weight: 400;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-3xl) var(--space-lg);
+            position: relative;
+            transition: background-color 0.4s ease;
+        }
+
+        section:hover {
+            background-color: var(--color-bg-hover);
+        }
+
+        /* Hero and final section: pure white */
+        section:first-child,
+        section:last-child {
+            background: var(--color-bg-primary);
+        }
+
+        section:first-child:hover,
+        section:last-child:hover {
+            background: var(--color-bg-primary);
+        }
+
+        /* Alternating backgrounds */
+        section:nth-child(even) {
+            background: var(--color-bg-alternate-dark);
+        }
+
+        section:nth-child(even):hover {
+            background: #f8f8f8;
+        }
+
+        .content {
+            max-width: 680px;
+            opacity: 0;
+            transform: translate3d(0, 30px, 0);
+            filter: blur(3px);
+            will-change: opacity, transform, filter;
+            transition:
+                opacity 1s cubic-bezier(0.4, 0.0, 0.2, 1),
+                transform 1s cubic-bezier(0.4, 0.0, 0.2, 1),
+                filter 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+
+        .content.visible {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+            filter: blur(0);
+        }
+
+        /* First section visible by default */
+        section:first-child .content {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+            filter: blur(0);
+        }
+
+        /* Stagger child element animations */
+        .content > * {
+            opacity: 0;
+            transform: translate3d(0, 20px, 0);
+            transition:
+                opacity 0.8s cubic-bezier(0.4, 0.0, 0.2, 1),
+                transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+
+        .content.visible > * {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+
+        .content.visible > *:nth-child(1) {
+            transition-delay: 0ms;
+        }
+
+        .content.visible > *:nth-child(2) {
+            transition-delay: 100ms;
+        }
+
+        .content.visible > *:nth-child(3) {
+            transition-delay: 200ms;
+        }
+
+        /* First section children visible by default */
+        section:first-child .content > * {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--space-2xl);
+            color: var(--color-text-primary);
+            transition: opacity 0.3s ease;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 400;
+            line-height: 1.4;
+            letter-spacing: -0.025em;
+            margin-bottom: var(--space-lg);
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: var(--color-text-medium);
+            line-height: 1.7;
+        }
+
+        .section-text {
+            font-size: 1.35rem;
+            line-height: 1.55;
+            letter-spacing: -0.015em;
+            color: var(--color-text-primary);
+        }
+
+        .secondary {
+            color: var(--color-text-secondary);
+            margin-top: var(--space-sm);
+        }
+
+        a {
+            color: var(--color-text-primary);
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-link-underline);
+            transition: border-color 0.3s ease, color 0.3s ease, font-weight 0.3s ease;
+            padding: var(--space-xs) 0;
+            display: inline-block;
+        }
+
+        a:hover {
+            border-color: var(--color-text-primary);
+            color: var(--color-link-hover);
+            font-weight: 500;
+        }
+
+        .stats {
+            margin-top: var(--space-lg);
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            font-variant-numeric: tabular-nums;
+        }
+
+        @media (max-width: 640px) {
+            html {
+                font-size: 16px;
+            }
+
+            section {
+                padding: var(--space-xl) var(--space-md);
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-text {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .content,
+            .content > *,
+            .logo,
+            a,
+            section {
+                transition: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+                filter: none !important;
+                will-change: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="content">
+            <div class="logo">ForthBridge</div>
+            <h1>Care delivery organizations bring their clinical footprint. We provide the technology and operations infrastructure to sell health programs directly to employers.</h1>
+            <p>A new line of business—without building it yourself.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="content">
+            <p class="section-text">An app for your members. A workspace for your providers. A portal for your employer clients. Enrollment, billing, and reporting underneath.</p>
+            <p class="section-text secondary">All white-labeled. Ready in weeks.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="content">
+            <p class="section-text">Need virtual care? We partner with NextLevel DPC to provide it—primary care, urgent care, behavioral health, nutrition—under your brand.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="content">
+            <p class="section-text">We work with urgent care chains, primary care networks, health systems, and MSOs—organizations with clinics and providers who want to contract directly with employers.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="content">
+            <p class="section-text">Live today powering NextLevel PRIME in Texas.</p>
+            <p class="stats">120,000 members · 500 employers · 99.6% retention</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="content">
+            <p class="section-text"><a href="mailto:hello@forthbridge.com">hello@forthbridge.com</a></p>
+        </div>
+    </section>
+
+    <script>
+        // ============================================
+        // SCROLL-TRIGGERED ANIMATIONS
+        // ============================================
+
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Remove will-change after animation completes for performance
+                    setTimeout(() => {
+                        entry.target.style.willChange = 'auto';
+                    }, 1000);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.content').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ============================================
+        // PARALLAX SCROLL EFFECTS
+        // ============================================
+
+        let ticking = false;
+        let lastScrollY = window.scrollY;
+
+        function updateParallax() {
+            const scrollY = window.scrollY;
+
+            // Hero logo fade
+            const logo = document.querySelector('.logo');
+            if (logo) {
+                const logoOpacity = Math.max(0.85, 1 - (scrollY / 500));
+                logo.style.opacity = logoOpacity;
+            }
+
+            // Subtle parallax on alternating sections
+            const alternateSections = document.querySelectorAll('section:nth-child(even)');
+            alternateSections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const scrollPercent = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+
+                if (scrollPercent > 0 && scrollPercent < 1) {
+                    const translateY = (scrollPercent - 0.5) * 15;
+                    section.style.transform = `translate3d(0, ${translateY}px, 0)`;
+                }
+            });
+
+            ticking = false;
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                window.requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }
+
+        // Throttled scroll listener
+        window.addEventListener('scroll', requestTick, { passive: true });
+
+        // ============================================
+        // ANALYTICS: CUSTOM EVENT TRACKING
+        // ============================================
+
+        // Track email clicks
+        document.addEventListener('DOMContentLoaded', () => {
+            const emailLink = document.querySelector('a[href^="mailto"]');
+            if (emailLink) {
+                emailLink.addEventListener('click', () => {
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'email_click', {
+                            'event_category': 'engagement',
+                            'event_label': 'Contact email clicked'
+                        });
+                    }
+                });
+            }
+        });
+
+        // Track scroll depth
+        let maxScrollDepth = 0;
+        let scrollDepthTimeout;
+
+        function trackScrollDepth() {
+            clearTimeout(scrollDepthTimeout);
+            scrollDepthTimeout = setTimeout(() => {
+                const scrollPercent = ((window.scrollY + window.innerHeight) / document.body.scrollHeight) * 100;
+                const depth = Math.floor(scrollPercent / 25) * 25; // Round to 0, 25, 50, 75, 100
+
+                if (depth > maxScrollDepth && depth >= 25) {
+                    maxScrollDepth = depth;
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'scroll_depth', {
+                            'event_category': 'engagement',
+                            'event_label': `${depth}% scrolled`,
+                            'value': depth
+                        });
+                    }
+                }
+            }, 500);
+        }
+
+        window.addEventListener('scroll', trackScrollDepth, { passive: true });
+    </script>
+</body>
+</html>
