@@ -281,6 +281,11 @@
                 display: inline;
             }
 
+            /* Reduce button padding on mobile */
+            .header-contact-button {
+                padding: var(--space-xs) var(--space-sm);
+            }
+
             /* Sticky header gradient for mobile */
             .sticky-header::before {
                 content: '';
@@ -377,6 +382,10 @@
             background: var(--color-bg-hover);
         }
 
+        .contact-full {
+            display: inline;
+        }
+
         .contact-short {
             display: none;
         }
@@ -420,6 +429,13 @@
         <div class="content">
             <h1>Who's it for</h1>
             <p class="section-text">Care delivery organizations that want to contract directly with employers—urgent care chains, primary care networks, retail health, and PE-backed groups.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="content">
+            <h1>Built for program performance.</h1>
+            <p class="section-text">Enrollment and billing are part of it. But what keeps employers renewing and members coming back is the clinical experience, the member engagement, and the outcomes you can prove.</p>
         </div>
     </section>
 
