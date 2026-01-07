@@ -272,6 +272,15 @@
                 line-height: 1.75;
             }
 
+            /* Show short contact text on mobile */
+            .contact-full {
+                display: none;
+            }
+
+            .contact-short {
+                display: inline;
+            }
+
             /* Sticky header gradient for mobile */
             .sticky-header::before {
                 content: '';
@@ -354,6 +363,7 @@
             opacity: 0;
             font-weight: 300;
             letter-spacing: -0.005em;
+            white-space: nowrap;
         }
 
         .sticky-header.visible .header-contact-button {
@@ -367,12 +377,19 @@
             background: var(--color-bg-hover);
         }
 
+        .contact-short {
+            display: none;
+        }
+
     </style>
 </head>
 <body>
     <header class="sticky-header">
         <img src="/assets/ForthBridgeOSLogo.svg" alt="ForthBridge">
-        <a href="mailto:hello@forth-bridge.com" class="header-contact-button">Contact Us</a>
+        <a href="mailto:hello@forth-bridge.com" class="header-contact-button">
+            <span class="contact-full">Contact Us</span>
+            <span class="contact-short">Contact</span>
+        </a>
     </header>
 
     <section>
